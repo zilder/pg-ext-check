@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:buster-slim
 
 # Environment
 ENV LANG=C.UTF-8 REPO=/repo
