@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -ux
+set -x
 
 # build extension
 make install CFLAGS="$CFLAGS"
