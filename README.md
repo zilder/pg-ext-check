@@ -2,7 +2,7 @@
 
 A docker image to build and test PostgreSQL extensions. An already built and ready to use image can be found on [docker hub](https://hub.docker.com/repository/docker/zilder/pg-ext-check).
 
-## Usage example for Github Actions
+## Example for Github Actions
 
 ```yaml
 name: CI
@@ -16,6 +16,7 @@ on:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         pg: [13, 12, 11, 10, 9.6, 9.5]
     name: PostgreSQL ${{ matrix.pg }}
