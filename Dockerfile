@@ -12,11 +12,6 @@ RUN apt-get update && \
 # Make directories
 RUN	mkdir -p $REPO
 
-# Grant privileges
-#RUN	chown -R postgres:postgres $REPO && \
-#	chmod a+rwx /usr/local/lib/postgresql && \
-#	chmod a+rwx /usr/local/share/postgresql/extension
-
 # Add script that automates repository setup for postgres packages
 ADD https://salsa.debian.org/postgresql/postgresql-common/raw/master/pgdg/apt.postgresql.org.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/apt.postgresql.org.sh
