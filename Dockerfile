@@ -5,7 +5,7 @@ ENV LANG=C.UTF-8 REPO=/repo
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends build-essential clang llvm gnupg2 && \
+    apt-get install -y --no-install-recommends build-essential clang llvm gnupg2 git ca-certificates && \
     apt-get clean && \
     rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 

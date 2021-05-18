@@ -7,6 +7,7 @@ A docker image to build and test PostgreSQL extensions. The already built and re
 * `pg-setup <PG_VERSION>`: install and run specified PostgreSQL version.
 * `install-dependency REPO1 [REPO2 ...]`: clone, build and install listed PostgreSQL extensions. GitHub is used as default platform, but can be changed by `HOST` environment variable. Authentication tokens (e.g. GitHub personal access token) are supported and can be specified with `AUTH_TOKEN` environment variable.
 * `build-check`: build and install extension and run regression tests. In case of test failure the `regression.diff` is printed out and error code is returned.
+* `update-check`: when extension has both extension script and update script, check that update script applies successfully and resulting extension containes the same objects that the base script does.
 
 ## Example for Github Actions
 

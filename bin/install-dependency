@@ -6,11 +6,6 @@ if [[ -n ${AUTH_TOKEN} ]]; then
     prefix="${AUTH_TOKEN}:x-oauth-basic@"
 fi
 
-if ! command -v git &> /dev/null
-then
-    apt-get install -y git
-fi
-
 for repo in $@
 do
     echo "Cloning and building https://${HOST}/${repo}.git..."
