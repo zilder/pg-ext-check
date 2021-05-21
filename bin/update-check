@@ -5,10 +5,18 @@ psql_cmd='psql postgres -U postgres -t -q'
 control_file=`ls *.control`
 
 # get the main branch name
-main_branch=`git remote show origin | awk '/HEAD branch/ {print $NF}'`
+#
+# XXX here is a little trick that allows to test both local copy of repo (which
+# usually already contains all branches) as well as repo in Github Actions
+# (which usually only contains the branch being tested).
+if ! git symbolic-ref refs/remotes/origin/HEAD --quiet > /dev/null; then
+    main_branch=`git remote show origin | awk '/HEAD branch/ {print $NF}'`
 
-# fetch main branch in order to get access to its control file
-git fetch origin master --quiet
+    # fetch main branch in order to get access to its control file
+    git fetch origin master --quiet
+else
+    main_branch=`git symbolic-ref refs/remotes/origin/HEAD | sed 's/^refs\/remotes\/origin\///'`
+fi
 
 # get extension version number from main and current branches
 main_version=`git show origin/$main_branch:$control_file | \
